@@ -5,14 +5,15 @@ import fs from 'fs';
 import glob from 'glob';
 import copyfiles from 'copyfiles';
 import rimraf from 'rimraf';
+import cpx from 'cpx';
 
 const IMAGE_FILES = '/**/*.+(tiff|jpeg|jpg|gif|png|bmp)';
 const WORKSPACE = 'test/__workspace__';
 const RESOURCE = 'resource';
 const SAMPLE_IMAGE = 'sample.jpg';
 
-test.beforeEach(async t => {
-  await new Promise((resolve) => copyfiles([`${RESOURCE}${IMAGE_FILES}`, WORKSPACE], resolve));
+test.beforeEach(t => {
+  cpx.copySync(`${RESOURCE}${IMAGE_FILES}`, WORKSPACE);
 })
 
 // test('should display error message when passing only 1 argument', async t => {
