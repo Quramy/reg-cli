@@ -7,6 +7,8 @@ install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
   - choco install imagemagick
+  - ps: refreshenv
+  - set PATH=C:\Program Files\ImageMagick-7.0.5-Q16;%PATH%
   # install modules
   - npm install
 

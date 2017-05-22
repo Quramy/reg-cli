@@ -12,8 +12,8 @@ const WORKSPACE = 'test/__workspace__';
 const RESOURCE = 'resource';
 const SAMPLE_IMAGE = 'sample.jpg';
 
-test.beforeEach(t => {
-  cpx.copySync(`${RESOURCE}${IMAGE_FILES}`, WORKSPACE);
+test.beforeEach(async t => {
+  await new Promise((resolve) => copyfiles([`${RESOURCE}${IMAGE_FILES}`, WORKSPACE], resolve));
 })
 
 // test('should display error message when passing only 1 argument', async t => {
